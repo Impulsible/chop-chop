@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chop Chop — We Deliver, You Chop</title>
+
+  <!-- Meta -->
+  <meta name="description" content="Chop Chop — Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door. We deliver, you chop.">
+  <meta name="keywords" content="Chop Chop, food delivery, Nigeria, shawarma, jollof, delivery app">
+  <meta name="author" content="Chop Chop">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Chop Chop — We Deliver, You Chop">
+  <meta property="og:description" content="Chop Chop — Premium Nigerian food delivery. Quick, fresh, reliable.">
+  <meta property="og:image" content="https://example.com/chopchop-banner.jpg">
+  <meta property="og:url" content="https://chopchop.ng">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chop Chop — We Deliver, You Chop">
+  <meta name="twitter:description" content="Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door.">
+  <meta name="twitter:image" content="https://example.com/chopchop-banner.jpg">
+
+  <!-- Tailwind CSS & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2e0ad1c52.js" crossorigin="anonymous"></script>
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF4C4C',
+            secondary: '#FF9F1C',
+            accent: '#FFD166',
+            bg: '#FFF7E6',
+            text: '#222',
+            theme: {
+  extend: {
+    keyframes: {
+      fadeIn: {
+        '0%': { opacity: '0', transform: 'translateY(20px)' },
+        '100%': { opacity: '1', transform: 'translateY(0)' },
+      },
+      float: {
+        '0%, 100%': { transform: 'translateY(0px)' },
+        '50%': { transform: 'translateY(-10px)' },
+      },
+    },
+    animation: {
+      fadeIn: 'fadeIn 1s ease-out forwards',
+      float: 'float 3s ease-in-out infinite',
+    },
+  },
+}
+
+          },
+          fontFamily: {
+            brand: ['Montserrat', 'sans-serif'],
+            body: ['Nunito', 'sans-serif'],
+          },
+          keyframes: {
+            blink: {
+              '0%,50%,100%': { opacity: '1' },
+              '25%,75%': { opacity: '0' }
+            }
+          },
+          animation: {
+            blink: 'blink 0.8s infinite'
+          },
+          boxShadow: {
+            hero: '0 10px 30px rgba(255,76,76,0.18)',
+          }
+        }
+      }
+    }
+    
+  </script>
+  
+</head>
+<body class="antialiased font-body bg-bg text-text">
+
+  <!-- HEADER -->
+<header id="header" class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm border-b shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+
+    <!-- Brand -->
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="bg-white rounded-full p-2 shadow-md">
+        <i class="fas fa-motorcycle text-primary text-lg"></i>
+      </span>
+      <span class="brand text-xl font-bold text-primary font-brand">Chop Chop</span>
+    </a>
+
+    <!-- Search Bar (Desktop Only) -->
+    <div class="flex-1 hidden sm:block">
+      <div class="relative max-w-lg mx-auto">
+        <input id="searchInput" type="text" class="w-full rounded-full px-4 py-2 border focus:ring-2 focus:ring-primary outline-none" placeholder="Search Shawarma, Jollof, Drinks..." aria-label="Search menu items">
+        <button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm hover:bg-primary/90 transition">Search</button>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation & Actions -->
+    <div class="hidden md:flex items-center gap-4">
+
+      <!-- Navigation Links -->
+      <nav class="flex items-center gap-4 text-sm font-medium text-gray-700">
+        <a href="index.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="index">Home</a>
+        <a href="menu.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="menu">Menu</a>
+        <a href="restaurants.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="restaurants">Top Restaurants</a>
+        <a href="contact.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="contact">Contact</a>
+        <a href="login.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="login">Login</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Dark Mode Toggle -->
+        <button id="darkToggle" class="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-100 transition" aria-label="Toggle dark mode">
+          <i class="fas fa-moon text-gray-600"></i>
+        </button>
+
+        <!-- Cart Button -->
+        <button id="cartBtn" class="relative flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white shadow hover:bg-primary/90 transition" aria-label="View cart">
+          <span class="text-lg">🛒</span>
+          <span id="cartCount" class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-secondary text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 border rounded-full hover:bg-gray-100 transition" aria-label="Open menu">
+      <i class="fas fa-bars text-gray-700"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Navigation Panel -->
+  <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg border-t">
+    <nav class="flex flex-col p-4 gap-2 text-gray-700 font-medium">
+      <a href="index.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="index">Home</a>
+      <a href="menu.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="menu">Menu</a>
+      <a href="restaurants.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="restaurants">Top Restaurants</a>
+      <a href="contact.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="contact">Contact</a>
+      <a href="login.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="login">Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform translate-x-full transition-transform z-50 flex flex-col">
+  <div class="flex justify-between items-center p-4 border-b">
+    <h2 class="text-lg font-bold">Your Cart</h2>
+    <button id="closeCartDrawer" class="text-gray-500 hover:text-gray-700">&times;</button>
+  </div>
+  <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-4">
+    <!-- Cart items will be dynamically inserted here -->
+  </div>
+  <div class="p-4 border-t flex flex-col gap-2">
+    <div class="flex justify-between font-semibold text-lg">
+      <span>Subtotal:</span>
+      <span id="cartSubtotal">₦0</span>
+    </div>
+    <button id="checkoutBtn" class="w-full bg-primary text-white py-2 rounded hover:bg-primary/90 transition">Checkout</button>
+    <button id="clearCartBtn" class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">Clear Cart</button>
+  </div>
+</div>
+
+      <!-- Mobile Hamburger -->
+      <button id="menuToggle" class="md:hidden flex flex-col justify-between w-8 h-6 space-y-1" aria-label="Toggle mobile menu">
+        <span class="block w-full h-1 bg-gray-700 rounded"></span>
+        <span class="block w-full h-1 bg-gray-700 rounded"></span>
+        <span class="block w-full h-1 bg-gray-700 rounded"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Panel -->
+    <div id="mobilePanel" class="hidden md:hidden border-t bg-white">
+      <div class="px-4 py-4 space-y-2">
+        <a href="index.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Home</a>
+        <a href="menu.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Menu</a>
+        <a href="restaurants.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Top Restaurants</a>
+        <a href="contact.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Contact</a>
+        <hr class="my-2"/>
+        <a href="login.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <<!-- MAIN HERO -->
+<main class="pt-20">
+  <section id="home" class="bg-bg">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
+
+      <!-- LEFT HERO -->
+      <div>
+  <h1 class="brand text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 font-brand">
+    Fast, fresh & delivered — <span class="text-primary">Chop Chop</span>
+  </h1>
+
+  <!-- Static Subtitle -->
+  <p class="mt-2 max-w-xl text-xl sm:text-2xl md:text-3xl font-serif text-gray-700">
+    Delicious Nigerian meals at your doorstep
+  </p>
+
+  <!-- Rotating Hero Subtitles -->
+  <p class="mt-4 max-w-xl text-xl text-gray-700 font-serif">
+    <span id="heroSubtitle"></span>
+    <span id="cursor" class="inline-block ml-[2px] text-primary animate-blink">|</span>
+  </p>
+
+  <!-- CTA Buttons -->
+  <div class="mt-6 flex flex-wrap gap-4">
+    <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition transform flex items-center gap-2">
+      <i class="fas fa-utensils"></i> Order Now
+    </a>
+    <a href="#top-restaurants" class="bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 px-6 py-3 rounded-full font-semibold transition transform hover:scale-105 flex items-center gap-2">
+      <i class="fas fa-store"></i> Top Restaurants
+    </a>
+  </div>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
+            <i class="fas fa-clock text-primary text-2xl"></i>
+            <div>
+              <div class="text-xs text-gray-500">Avg delivery</div>
+              <div class="font-semibold">25 - 35 mins</div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
+            <i class="fas fa-shopping-cart text-primary text-2xl"></i>
+            <div>
+              <div class="text-xs text-gray-500">Orders</div>
+              <div class="font-semibold counter" data-target="120000">45</div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
+            <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+            <div>
+              <div class="text-xs text-gray-500">Cities</div>
+              <div class="font-semibold counter" data-target="12">50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT HERO SLIDER -->
+      <div class="text-center lg:text-right">
+        <div class="rounded-2xl overflow-hidden shadow-2xl">
+          <div class="swiper heroSlider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1400&auto=format&fit=crop" alt="Dish 1" class="w-full h-80 object-cover" loading="lazy">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1400&auto=format&fit=crop" alt="Dish 2" class="w-full h-80 object-cover" loading="lazy">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1400&auto=format&fit=crop" alt="Dish 3" class="w-full h-80 object-cover" loading="lazy">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=1400&auto=format&fit=crop" alt="Dish 4" class="w-full h-80 object-cover" loading="lazy">
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1526366003456-4a7f3c6f4a38?q=80&w=1400&auto=format&fit=crop" alt="Dish 5" class="w-full h-80 object-cover" loading="lazy">
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+<!-- SNACK OF THE DAY -->
+<section id="snack" class="py-12 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="bg-white rounded-3xl shadow-lg p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 transition transform hover:scale-105">
+      
+      <!-- Snack Info -->
+      <div class="flex-1">
+        <div class="text-sm text-gray-500 uppercase tracking-wide">Snack of the Day</div>
+        <h3 id="snackTitle" class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 text-gray-900">Loading...</h3>
+        <p id="snackDesc" class="text-gray-700 mt-2 text-lg sm:text-xl">Please wait...</p>
+        
+        <!-- Countdown Timer -->
+        <div class="mt-4 text-gray-600 text-lg sm:text-xl font-medium flex items-center gap-2" id="snackCountdownWrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Next snack in: <span id="snackCountdown" class="font-bold text-primary">00h 00m 00s</span>
+        </div>
+
+        <!-- Price & Order Button -->
+        <div class="mt-6 flex items-center gap-4">
+          <span id="snackPrice" class="text-2xl sm:text-3xl font-bold text-primary">₦0</span>
+          <a href="menu.html" class="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-dark transition transform hover:scale-105">Order Snack</a>
+        </div>
+      </div>
+
+      <!-- Snack Image -->
+      <div class="w-full sm:w-64">
+        <img id="snackImage" src="" alt="Snack" class="rounded-2xl shadow-md w-full h-48 sm:h-56 object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // List of snacks for rotation
+  const snacks = [
+    {
+      title: "Plantain Chips + Drink",
+      desc: "Crispy plantain chips paired with an ice-cold refreshment — perfect for a quick bite.",
+      price: "₦600",
+      img: "https://images.unsplash.com/photo-1625944230942-0f77a2c63c7d?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      title: "Spicy Suya Skewers",
+      desc: "Tender meat skewers grilled to perfection with our signature spicy suya blend.",
+      price: "₦1200",
+      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      title: "Jollof Rice Combo",
+      desc: "Delicious Nigerian jollof rice served with chicken and plantains.",
+      price: "₦1500",
+      img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      title: "Egusi Soup & Pounded Yam",
+      desc: "Traditional Egusi soup served with soft, stretchy pounded yam.",
+      price: "₦2000",
+      img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      title: "Fried Yam & Egg Sauce",
+      desc: "Golden fried yam chunks served with a rich, spicy egg sauce.",
+      price: "₦800",
+      img: "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=800&auto=format&fit=crop"
+    }
+  ];
+
+  // Calculate which snack to show based on the day
+  const now = new Date();
+  const snackIndex = now.getDate() % snacks.length;
+  const todaySnack = snacks[snackIndex];
+
+  // Set snack details
+  document.getElementById("snackTitle").textContent = todaySnack.title;
+  document.getElementById("snackDesc").textContent = todaySnack.desc;
+  document.getElementById("snackPrice").textContent = todaySnack.price;
+  document.getElementById("snackImage").src = todaySnack.img;
+
+  // Countdown to next snack (midnight)
+  const countdownEl = document.getElementById("snackCountdown");
+  function updateCountdown() {
+    const now = new Date();
+    const nextMidnight = new Date(now);
+    nextMidnight.setDate(now.getDate() + 1);
+    nextMidnight.setHours(0,0,0,0);
+
+    const diff = nextMidnight - now;
+    const hours = String(Math.floor(diff / 1000 / 60 / 60)).padStart(2,'0');
+    const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2,'0');
+    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2,'0');
+
+    countdownEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+</script>
+
+<!-- TOP RESTAURANTS -->
+<section id="top-restaurants" class="py-8 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold">Top Restaurants We Deliver From</h2>
+      <!-- Link to full menu page -->
+      <a href="menu.html" class="text-primary font-semibold text-sm hover:underline">See all</a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
+        <img src="https://via.placeholder.com/120x80" alt="Mama's Kitchen" class="rounded mb-3 w-full h-20 object-cover">
+        <div class="font-semibold text-lg">Mama's Kitchen</div>
+        <div class="text-sm text-gray-500 mb-3">Lagos</div>
+        <!-- Link to menu page filtered by restaurant -->
+        <a href="menu.html?restaurant=Mama's Kitchen" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
+          View Menu
+        </a>
+      </div>
+
+      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
+        <img src="https://via.placeholder.com/120x80" alt="Grill House" class="rounded mb-3 w-full h-20 object-cover">
+        <div class="font-semibold text-lg">Grill House</div>
+        <div class="text-sm text-gray-500 mb-3">Abuja</div>
+        <a href="menu.html?restaurant=Grill House" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
+          View Menu
+        </a>
+      </div>
+
+      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
+        <img src="https://via.placeholder.com/120x80" alt="Sweet Corner" class="rounded mb-3 w-full h-20 object-cover">
+        <div class="font-semibold text-lg">Sweet Corner</div>
+        <div class="text-sm text-gray-500 mb-3">Port Harcourt</div>
+        <a href="menu.html?restaurant=Sweet Corner" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
+          View Menu
+        </a>
+      </div>
+
+      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
+        <img src="https://via.placeholder.com/120x80" alt="Daily Bites" class="rounded mb-3 w-full h-20 object-cover">
+        <div class="font-semibold text-lg">Daily Bites</div>
+        <div class="text-sm text-gray-500 mb-3">Enugu</div>
+        <a href="menu.html?restaurant=Daily Bites" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
+          View Menu
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!-- MENU -->
+<section id="menu" class="py-8">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold">Popular near you</h2>
+      <div class="flex items-center gap-3">
+        <select id="filterCategory" class="p-2 rounded-lg border" aria-label="Filter category">
+          <option value="all">All</option>
+          <option value="fast-food">Fast Food</option>
+          <option value="drinks">Drinks</option>
+          <option value="desserts">Desserts</option>
+          <option value="groceries">Groceries</option>
+        </select>
+        <select id="sortBy" class="p-2 rounded-lg border" aria-label="Sort by">
+          <option value="popular">Popular</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Menu Grid -->
+    <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+
+   <!-- TESTIMONIALS -->
+<section id="testimonials" class="py-16 bg-gradient-to-r from-primary/10 via-white to-primary/10">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 animate-fadeInDown">What Our Customers Say</h2>
+    <p class="text-gray-600 mb-12 max-w-2xl mx-auto animate-fadeInDown delay-200">Real feedback from our satisfied customers who love our meals and fast delivery.</p>
+
+    <div class="swiper testsSwiper">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination mt-6"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 1s ease forwards; }
+.animate-fadeInDown { animation: fadeInDown 1s ease forwards; }
+.delay-200 { animation-delay: 0.2s; }
+</style>
+
+   <!-- NEWSLETTER -->
+<section class="py-12">
+  <div class="max-w-4xl mx-auto px-4 text-center bg-primary/10 rounded-3xl p-8 shadow-lg">
+    <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Get updates & exclusive deals</h3>
+    <p class="text-gray-700 mt-2 sm:text-lg">Subscribe to our newsletter for promos and free delivery weeks.</p>
+    <form id="newsletterForm" class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+      <input id="nlEmail" type="email" placeholder="Enter your email" class="p-3 sm:px-5 rounded-xl border w-full sm:w-auto focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Email">
+      <button class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition transform hover:scale-105">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-3xl w-11/12 max-w-md p-6 sm:p-8 shadow-2xl">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-xl sm:text-2xl font-bold">Welcome back</h3>
+      <button id="closeLogin" class="p-2 rounded-md hover:bg-gray-200 transition" aria-label="Close login modal"><i class="fas fa-times"></i></button>
+    </div>
+    <p class="text-gray-600 mb-4">Login to track orders and save favourites.</p>
+    <form id="loginForm" class="space-y-3">
+      <input id="loginEmail" type="email" placeholder="Email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Email">
+      <input id="loginPass" type="password" placeholder="Password" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Password">
+      <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition transform hover:scale-105">Login</button>
+    </form>
+    <div class="mt-3 text-sm text-gray-600 text-center">
+      Don't have an account? <a href="#signup" class="text-secondary font-semibold hover:underline">Create one</a>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<aside id="cartDrawer" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition z-50">
+  <div class="p-4 border-b flex items-center justify-between">
+    <h3 class="font-bold text-lg">Your Order</h3>
+    <button id="closeCartDrawer" class="p-2 rounded hover:bg-gray-200 transition" aria-label="Close cart drawer"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="cartItems" class="p-4 space-y-4 overflow-y-auto max-h-[60vh]"></div>
+  <div class="p-4 border-t">
+    <div class="flex justify-between items-center mb-3">
+      <div class="text-sm text-gray-500">Subtotal</div>
+      <div id="cartSubtotal" class="font-bold text-lg">₦0</div>
+    </div>
+    <button id="checkoutBtn" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition transform hover:scale-105">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<!-- FOOTER -->
+<footer class="site-footer mt-12 bg-white">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 rounded-3xl shadow-lg">
+    <div>
+      <div class="brand text-2xl sm:text-3xl font-bold text-primary flex items-center gap-2"><i class="fas fa-motorcycle text-yellow-400"></i> Chop Chop</div>
+      <p class="text-gray-600 mt-3 sm:mt-4 sm:text-lg">Delivering fresh meals & groceries across Nigeria. Fast, reliable, local.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Quick Links</h4>
+      <ul class="text-gray-600 space-y-2">
+        <li><a href="#menu" class="hover:text-gray-900 transition">Menu</a></li>
+        <li><a href="#top-restaurants" class="hover:text-gray-900 transition">Top Restaurants</a></li>
+        <li><a href="#testimonials" class="hover:text-gray-900 transition">Testimonials</a></li>
+        <li><a href="#snack" class="hover:text-gray-900 transition">Snack of the Day</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Contact</h4>
+      <p class="text-gray-600 sm:text-lg">hello@chopchop.ng<br/>+234 000 000 0000</p>
+      <div class="flex gap-3 mt-4">
+        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center text-gray-500 mt-6 text-sm sm:text-base flex flex-col sm:flex-row justify-center items-center gap-2">
+    <span><i class="fas fa-truck text-yellow-400 mr-2"></i> © <span id="year"></span> Chop Chop. All rights reserved.</span>
+    <span>Last modified: <span id="lm"></span></span>
+  </div>
+</footer>
+
+<script>
+  // Footer dynamic year and last modified
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('lm').textContent = document.lastModified;
+</script>
+
+  <!-- App JS -->
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lm').textContent = document.lastModified;
+  </script>
+
+</body>
+</html>
