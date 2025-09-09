@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Chop Chop — We Deliver, You Chop</title>
 
-  <!-- Meta -->
-  <meta name="description" content="Chop Chop — Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door. We deliver, you chop.">
-  <meta name="keywords" content="Chop Chop, food delivery, Nigeria, shawarma, jollof, delivery app">
-  <meta name="author" content="Chop Chop">
+  <!-- SEO -->
+  <meta name="description" content="Chop Chop — Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door. We deliver, you chop." />
+  <meta name="keywords" content="Chop Chop, food delivery, Nigeria, shawarma, jollof, delivery app" />
+  <meta name="author" content="Chop Chop" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Chop Chop — We Deliver, You Chop">
-  <meta property="og:description" content="Chop Chop — Premium Nigerian food delivery. Quick, fresh, reliable.">
-  <meta property="og:image" content="https://example.com/chopchop-banner.jpg">
-  <meta property="og:url" content="https://chopchop.ng">
+  <meta property="og:title" content="Chop Chop — We Deliver, You Chop" />
+  <meta property="og:description" content="Chop Chop — Premium Nigerian food delivery. Quick, fresh, reliable." />
+  <meta property="og:image" content="https://example.com/chopchop-banner.jpg" />
+  <meta property="og:url" content="https://chopchop.ng" />
+  <meta property="og:type" content="website" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Chop Chop — We Deliver, You Chop">
-  <meta name="twitter:description" content="Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door.">
-  <meta name="twitter:image" content="https://example.com/chopchop-banner.jpg">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chop Chop — We Deliver, You Chop" />
+  <meta name="twitter:description" content="Premium Nigerian food delivery. Fast meals, snacks, and groceries delivered to your door." />
+  <meta name="twitter:image" content="https://example.com/chopchop-banner.jpg" />
 
-  <!-- Tailwind CSS & Fonts -->
+  <!-- Favicon (replace with your files) -->
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a2e0ad1c52.js" crossorigin="anonymous"></script>
-
-  <!-- Tailwind Custom Config -->
+  <!-- Tailwind custom config (colors + fonts) -->
   <script>
     tailwind.config = {
       theme: {
@@ -46,208 +39,365 @@
             secondary: '#FF9F1C',
             accent: '#FFD166',
             bg: '#FFF7E6',
-            text: '#222',
-            theme: {
-  extend: {
-    keyframes: {
-      fadeIn: {
-        '0%': { opacity: '0', transform: 'translateY(20px)' },
-        '100%': { opacity: '1', transform: 'translateY(0)' },
-      },
-      float: {
-        '0%, 100%': { transform: 'translateY(0px)' },
-        '50%': { transform: 'translateY(-10px)' },
-      },
-    },
-    animation: {
-      fadeIn: 'fadeIn 1s ease-out forwards',
-      float: 'float 3s ease-in-out infinite',
-    },
-  },
-}
-
+            text: '#222'
           },
           fontFamily: {
             brand: ['Montserrat', 'sans-serif'],
-            body: ['Nunito', 'sans-serif'],
-          },
-          keyframes: {
-            blink: {
-              '0%,50%,100%': { opacity: '1' },
-              '25%,75%': { opacity: '0' }
-            }
-          },
-          animation: {
-            blink: 'blink 0.8s infinite'
+            body: ['Nunito', 'sans-serif']
           },
           boxShadow: {
-            hero: '0 10px 30px rgba(255,76,76,0.18)',
+            hero: '0 10px 30px rgba(255,76,76,0.18)'
           }
         }
       }
     }
-    
   </script>
-  
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0ad1c52.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --safe-top: env(safe-area-inset-top);
+    }
+    html.dark { background: #0b1220; color: #dbeafe; }
+    /* small helper animation */
+    @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
+    .blink { animation: blink 0.8s infinite; }
+  </style>
+<head>
+  <style>
+    /* Desktop nav underline */
+    .nav-container {
+      position: relative;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #e11d48;
+      font-weight: 600;
+    }
+
+    .nav-underline {
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: #e11d48;
+      border-radius: 2px;
+      transition: transform 0.3s ease, width 0.3s ease;
+      will-change: transform, width;
+    }
+  </style>
 </head>
+
 <body class="antialiased font-body bg-bg text-text">
 
-  <!-- HEADER -->
-<header id="header" class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm border-b shadow-sm">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+  <!-- =========================
+       HEADER
+       ========================= -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm border-b shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
 
-    <!-- Brand -->
-    <a href="index.html" class="flex items-center gap-2">
-      <span class="bg-white rounded-full p-2 shadow-md">
-        <i class="fas fa-motorcycle text-primary text-lg"></i>
-      </span>
-      <span class="brand text-xl font-bold text-primary font-brand">Chop Chop</span>
-    </a>
+      <!-- Brand -->
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="bg-white rounded-full p-2 shadow-md">
+          <i class="fas fa-motorcycle text-primary text-lg" aria-hidden="true"></i>
+        </span>
+        <span class="brand text-lg font-bold text-primary font-brand">Chop Chop</span>
+      </a>
 
-    <!-- Search Bar (Desktop Only) -->
-    <div class="flex-1 hidden sm:block">
-      <div class="relative max-w-lg mx-auto">
-        <input id="searchInput" type="text" class="w-full rounded-full px-4 py-2 border focus:ring-2 focus:ring-primary outline-none" placeholder="Search Shawarma, Jollof, Drinks..." aria-label="Search menu items">
-        <button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm hover:bg-primary/90 transition">Search</button>
-      </div>
-    </div>
+      <!-- Spacer -->
+      <div class="flex-1"></div>
 
-    <!-- Desktop Navigation & Actions -->
-    <div class="hidden md:flex items-center gap-4">
-
-      <!-- Navigation Links -->
-      <nav class="flex items-center gap-4 text-sm font-medium text-gray-700">
-        <a href="index.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="index">Home</a>
-        <a href="menu.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="menu">Menu</a>
-        <a href="restaurants.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="restaurants">Top Restaurants</a>
-        <a href="contact.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="contact">Contact</a>
-        <a href="login.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="login">Login</a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:block relative">
+        <div class="nav-container" role="navigation" aria-label="Primary">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="menu.html" class="nav-link">Menu</a>
+          <a href="restaurants.html" class="nav-link">Top Restaurants</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="login.html" class="nav-link">Login</a>
+          <span class="nav-underline"></span>
+        </div>
       </nav>
 
-      <!-- Action Buttons -->
+      <!-- Search Bar (Desktop) -->
+      <div class="hidden md:block relative max-w-sm mx-4">
+        <input id="searchInput" type="text" placeholder="Search food, drinks..." class="w-full rounded-full border px-4 py-2 focus:ring-2 focus:ring-primary outline-none">
+        <button id="searchBtn" class="absolute right-1 top-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm hover:bg-primary/90 transition">Search</button>
+      </div>
+
+      <!-- Actions -->
       <div class="flex items-center gap-3">
-        <!-- Dark Mode Toggle -->
-        <button id="darkToggle" class="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-100 transition" aria-label="Toggle dark mode">
-          <i class="fas fa-moon text-gray-600"></i>
+        <!-- Dark mode toggle -->
+        <button id="darkToggle" class="hidden md:flex w-10 h-10 rounded-full border items-center justify-center hover:bg-gray-100" aria-pressed="false" title="Toggle dark mode">
+          <i id="darkIcon" class="fas fa-moon text-gray-600"></i>
         </button>
 
-        <!-- Cart Button -->
-        <button id="cartBtn" class="relative flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white shadow hover:bg-primary/90 transition" aria-label="View cart">
-          <span class="text-lg">🛒</span>
-          <span id="cartCount" class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-secondary text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        <!-- Cart -->
+        <button id="cartBtn" class="relative flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white shadow hover:bg-primary/90" aria-haspopup="dialog" aria-controls="cartDrawer" aria-expanded="false" title="Open cart">
+          🛒
+          <span id="cartCount" class="absolute -top-1 -right-1 bg-secondary text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+        </button>
+
+        <!-- Mobile menu toggle -->
+        <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 border rounded-full hover:bg-gray-100" aria-controls="mobileMenuPanel" aria-expanded="false" aria-label="Open menu">
+          <svg class="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu Button -->
-    <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 border rounded-full hover:bg-gray-100 transition" aria-label="Open menu">
-      <i class="fas fa-bars text-gray-700"></i>
-    </button>
-
-  </div>
-
-  <!-- Mobile Navigation Panel -->
-  <div id="mobilePanel" class="md:hidden hidden bg-white shadow-lg border-t">
-    <nav class="flex flex-col p-4 gap-2 text-gray-700 font-medium">
-      <a href="index.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="index">Home</a>
-      <a href="menu.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="menu">Menu</a>
-      <a href="restaurants.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="restaurants">Top Restaurants</a>
-      <a href="contact.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="contact">Contact</a>
-      <a href="login.html" class="nav-link px-2 py-1 rounded hover:bg-primary/10" data-page="login">Login</a>
-    </nav>
-  </div>
-</header>
-
-<!-- CART DRAWER -->
-<div id="cartDrawer" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform translate-x-full transition-transform z-50 flex flex-col">
-  <div class="flex justify-between items-center p-4 border-b">
-    <h2 class="text-lg font-bold">Your Cart</h2>
-    <button id="closeCartDrawer" class="text-gray-500 hover:text-gray-700">&times;</button>
-  </div>
-  <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-4">
-    <!-- Cart items will be dynamically inserted here -->
-  </div>
-  <div class="p-4 border-t flex flex-col gap-2">
-    <div class="flex justify-between font-semibold text-lg">
-      <span>Subtotal:</span>
-      <span id="cartSubtotal">₦0</span>
-    </div>
-    <button id="checkoutBtn" class="w-full bg-primary text-white py-2 rounded hover:bg-primary/90 transition">Checkout</button>
-    <button id="clearCartBtn" class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition">Clear Cart</button>
-  </div>
-</div>
-
-      <!-- Mobile Hamburger -->
-      <button id="menuToggle" class="md:hidden flex flex-col justify-between w-8 h-6 space-y-1" aria-label="Toggle mobile menu">
-        <span class="block w-full h-1 bg-gray-700 rounded"></span>
-        <span class="block w-full h-1 bg-gray-700 rounded"></span>
-        <span class="block w-full h-1 bg-gray-700 rounded"></span>
-      </button>
-    </div>
-
-    <!-- Mobile Panel -->
-    <div id="mobilePanel" class="hidden md:hidden border-t bg-white">
-      <div class="px-4 py-4 space-y-2">
-        <a href="index.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Home</a>
-        <a href="menu.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Menu</a>
-        <a href="restaurants.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Top Restaurants</a>
-        <a href="contact.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Contact</a>
-        <hr class="my-2"/>
-        <a href="login.html" class="block py-2 px-3 hover:bg-gray-100 rounded">Login</a>
-      </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenuPanel" class="md:hidden hidden bg-white border-t shadow-sm">
+      <nav class="px-4 py-4 space-y-2" role="navigation" aria-label="Mobile primary">
+        <a href="index.html" class="block py-2 px-3 rounded hover:bg-gray-100">Home</a>
+        <a href="menu.html" class="block py-2 px-3 rounded hover:bg-gray-100">Menu</a>
+        <a href="restaurants.html" class="block py-2 px-3 rounded hover:bg-gray-100">Top Restaurants</a>
+        <a href="contact.html" class="block py-2 px-3 rounded hover:bg-gray-100">Contact</a>
+        <a href="login.html" class="block py-2 px-3 rounded hover:bg-gray-100">Login</a>
+        <hr class="my-2" />
+        <div class="flex items-center gap-2">
+          <button id="mobileDarkToggle" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100">
+            <i class="fas fa-moon text-gray-600"></i> Dark mode
+          </button>
+          <a href="#" class="ml-auto px-3 py-2 rounded bg-primary text-white">Order Now</a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <<!-- MAIN HERO -->
-<main class="pt-20">
-  <section id="home" class="bg-bg">
-    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
-
-      <!-- LEFT HERO -->
-      <div>
-  <h1 class="brand text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 font-brand">
-    Fast, fresh & delivered — <span class="text-primary">Chop Chop</span>
-  </h1>
-
-  <!-- Static Subtitle -->
-  <p class="mt-2 max-w-xl text-xl sm:text-2xl md:text-3xl font-serif text-gray-700">
-    Delicious Nigerian meals at your doorstep
-  </p>
-
-  <!-- Rotating Hero Subtitles -->
-  <p class="mt-4 max-w-xl text-xl text-gray-700 font-serif">
-    <span id="heroSubtitle"></span>
-    <span id="cursor" class="inline-block ml-[2px] text-primary animate-blink">|</span>
-  </p>
-
-  <!-- CTA Buttons -->
-  <div class="mt-6 flex flex-wrap gap-4">
-    <a href="menu.html" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition transform flex items-center gap-2">
-      <i class="fas fa-utensils"></i> Order Now
-    </a>
-    <a href="#top-restaurants" class="bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 px-6 py-3 rounded-full font-semibold transition transform hover:scale-105 flex items-center gap-2">
-      <i class="fas fa-store"></i> Top Restaurants
-    </a>
+  <!-- =========================
+     CART DRAWER
+     ========================= -->
+<aside id="cartDrawer" class="fixed top-0 right-0 h-full w-80 sm:w-96 bg-white shadow-2xl transform translate-x-full transition-transform z-50" aria-hidden="true" role="dialog" aria-label="Cart drawer">
+  <div class="p-4 border-b flex items-center justify-between">
+    <h2 class="text-lg font-bold">Your Cart</h2>
+    <button id="closeCartDrawer" class="p-2 rounded hover:bg-gray-100" aria-label="Close cart">&times;</button>
   </div>
+  <div id="cartItemsList" class="p-4 overflow-y-auto flex-1 space-y-3 max-h-[60vh]">
+    <div class="text-sm text-gray-500">Your cart is empty.</div>
+  </div>
+  <div class="p-4 border-t">
+    <div class="flex justify-between items-center font-semibold text-lg mb-3">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₦0</span>
+    </div>
+    <button id="checkoutBtn" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition">Proceed to Checkout</button>
+  </div>
+</aside>
 
-        <!-- Stats -->
-        <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
-            <i class="fas fa-clock text-primary text-2xl"></i>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // === CART FUNCTIONALITY ===
+    const cartDrawer = document.getElementById("cartDrawer");
+    const cartBtn = document.getElementById("cartBtn");
+    const closeCartBtn = document.getElementById("closeCartDrawer");
+    const cartItemsList = document.getElementById("cartItemsList");
+    const cartSubtotal = document.getElementById("cartSubtotal");
+    const cartCount = document.getElementById("cartCount");
+
+    let cart = [];
+
+    // Open cart drawer
+    cartBtn.addEventListener("click", () => {
+      cartDrawer.classList.remove("translate-x-full");
+    });
+
+    // Close cart drawer
+    closeCartBtn.addEventListener("click", () => {
+      cartDrawer.classList.add("translate-x-full");
+    });
+
+    // Function to update cart UI
+    function updateCart() {
+      cartItemsList.innerHTML = "";
+      let subtotal = 0;
+
+      if(cart.length === 0){
+        cartItemsList.innerHTML = `<div class="text-sm text-gray-500">Your cart is empty.</div>`;
+      } else {
+        cart.forEach((item, index) => {
+          const itemEl = document.createElement("div");
+          itemEl.classList.add("flex", "justify-between", "items-center", "p-2", "border-b");
+          itemEl.innerHTML = `
+            <span>${item.name} x${item.qty}</span>
+            <span>₦${item.price * item.qty}</span>
+            <button data-index="${index}" class="text-red-500 hover:text-red-700 ml-2">×</button>
+          `;
+          cartItemsList.appendChild(itemEl);
+        });
+      }
+
+      // Update subtotal
+      cart.forEach(item => subtotal += item.price * item.qty);
+      cartSubtotal.textContent = `₦${subtotal}`;
+
+      // Update cart count
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+
+      // Add remove functionality
+      document.querySelectorAll("#cartItemsList button").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.dataset.index;
+          cart.splice(idx, 1);
+          updateCart();
+        });
+      });
+    }
+
+    // Example function to add items to cart
+    window.addToCart = function(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if(existing){
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      updateCart();
+    };
+
+    // Optional: example usage
+    // addToCart("Jollof Rice", 1200);
+  });
+</script>
+
+  <script>
+    // === Sliding underline nav ===
+    const navLinks = document.querySelectorAll(".nav-link");
+    const underline = document.querySelector(".nav-underline");
+
+    function moveUnderline(el) {
+      const rect = el.getBoundingClientRect();
+      const parentRect = el.parentElement.getBoundingClientRect();
+      underline.style.width = rect.width + "px";
+      underline.style.transform = `translate3d(${rect.left - parentRect.left}px,0,0)`;
+    }
+
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    let activeLink = navLinks[0];
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+        activeLink = link;
+      }
+      link.addEventListener("mouseenter", () => moveUnderline(link));
+      link.addEventListener("mouseleave", () => moveUnderline(activeLink));
+    });
+
+    window.addEventListener("load", () => moveUnderline(activeLink));
+    window.addEventListener("resize", () => moveUnderline(activeLink));
+
+    // === Simple Page Search ===
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchBtn.addEventListener("click", () => {
+      const query = searchInput.value.toLowerCase();
+      if (!query) return;
+      const results = [];
+      document.querySelectorAll("h1, h2, h3, p, span, li, a").forEach(el => {
+        if (el.textContent.toLowerCase().includes(query)) results.push(el);
+      });
+      if (results.length) {
+        results[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        results[0].style.backgroundColor = "#FEF3C7"; // highlight
+        setTimeout(() => results[0].style.backgroundColor = "", 2000);
+      } else {
+        alert("No results found!");
+      }
+    });
+  </script>
+
+  <!-- spacer so content isn't hidden under header -->
+<main class="pt-0 md:pt-20">
+
+  <!-- HERO (mobile-first) -->
+  <section id="home" class="bg-bg pt-0 sm:pt-4 pb-6 sm:pb-8">
+    <div class="max-w-6xl mx-auto px-0 sm:px-4 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+
+      <!-- hero media slider -->
+      <div class="order-first lg:order-last">
+        <div class="overflow-hidden shadow-hero rounded-none md:rounded-2xl relative">
+          <div id="heroSlider" class="relative w-full h-52 sm:h-64 md:h-80 overflow-hidden">
+            <div class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1400&auto=format&fit=crop" 
+                   alt="Delicious food" 
+                   class="w-full h-full object-cover object-center md:object-top">
+            </div>
+            <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1400&auto=format&fit=crop" 
+                   alt="Nigerian jollof rice" 
+                   class="w-full h-full object-cover object-center md:object-top">
+            </div>
+            <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1604908177522-0404d64d5d71?q=80&w=1400&auto=format&fit=crop" 
+                   alt="Suya platter" 
+                   class="w-full h-full object-cover object-center md:object-top">
+            </div>
+            <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1400&auto=format&fit=crop" 
+                   alt="Refreshing drinks" 
+                   class="w-full h-full object-cover object-center md:object-top">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hero content -->
+      <div class="px-4 sm:px-0">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2 brand leading-snug">
+          Fast, fresh & delivered — <span class="text-primary">Chop Chop</span>
+        </h1>
+        <p class="text-gray-700 mb-3 sm:mb-4">
+          Delicious Nigerian meals delivered to your doorstep — quick, hot and made with care.
+        </p>
+
+        <!-- dynamic subtitle with typing effect -->
+        <p class="text-lg text-gray-700">
+          <span id="heroSubtitle" class="font-semibold"></span>
+          <span id="heroCursor" class="inline-block ml-1 text-primary blink">|</span>
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="menu.html" class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full font-semibold shadow"> 
+            <i class="fas fa-utensils"></i> Order Now
+          </a>
+          <a href="#top-restaurants" class="inline-flex items-center gap-2 bg-white border py-2 px-4 rounded-full font-semibold"> 
+            <i class="fas fa-store"></i> Top Restaurants
+          </a>
+        </div>
+
+        <!-- small stats -->
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="bg-white p-3 rounded-2xl shadow flex items-center gap-3">
+            <i class="fas fa-clock text-primary"></i>
             <div>
               <div class="text-xs text-gray-500">Avg delivery</div>
               <div class="font-semibold">25 - 35 mins</div>
             </div>
           </div>
-          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
-            <i class="fas fa-shopping-cart text-primary text-2xl"></i>
+
+          <div class="bg-white p-3 rounded-2xl shadow flex items-center gap-3">
+            <i class="fas fa-shopping-cart text-primary"></i>
             <div>
               <div class="text-xs text-gray-500">Orders</div>
               <div class="font-semibold counter" data-target="120000">45</div>
             </div>
           </div>
-          <div class="bg-gradient-to-r from-white to-gray-100 p-4 rounded-2xl shadow-lg text-left transform transition hover:scale-105 flex items-center gap-3">
-            <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+
+          <div class="bg-white p-3 rounded-2xl shadow flex items-center gap-3">
+            <i class="fas fa-map-marker-alt text-primary"></i>
             <div>
               <div class="text-xs text-gray-500">Cities</div>
               <div class="font-semibold counter" data-target="12">50</div>
@@ -255,193 +405,213 @@
           </div>
         </div>
       </div>
-
-      <!-- RIGHT HERO SLIDER -->
-      <div class="text-center lg:text-right">
-        <div class="rounded-2xl overflow-hidden shadow-2xl">
-          <div class="swiper heroSlider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1400&auto=format&fit=crop" alt="Dish 1" class="w-full h-80 object-cover" loading="lazy">
-              </div>
-              <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1400&auto=format&fit=crop" alt="Dish 2" class="w-full h-80 object-cover" loading="lazy">
-              </div>
-              <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1400&auto=format&fit=crop" alt="Dish 3" class="w-full h-80 object-cover" loading="lazy">
-              </div>
-              <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=1400&auto=format&fit=crop" alt="Dish 4" class="w-full h-80 object-cover" loading="lazy">
-              </div>
-              <div class="swiper-slide">
-                <img src="https://images.unsplash.com/photo-1526366003456-4a7f3c6f4a38?q=80&w=1400&auto=format&fit=crop" alt="Dish 5" class="w-full h-80 object-cover" loading="lazy">
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 </main>
-<!-- SNACK OF THE DAY -->
-<section id="snack" class="py-12 bg-white">
+
+<!-- HERO SLIDER + SUBTITLE SCRIPT -->
+<script>
+  // ===== Hero Slider =====
+  const slides = document.querySelectorAll('#heroSlider .slide');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = (i === index) ? "1" : "0";
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  setInterval(nextSlide, 4000); // change every 4s
+  showSlide(currentSlide);
+
+  // ===== Typing Subtitle Effect =====
+  const subtitles = [
+    "We Deliver, You Chop",
+    "A mu wa, kí o jẹ",
+    "Mu na zo, ku ci",
+    "Anyị na-ebunye, ị na-eri",
+    "À múnọ̀, í chop",
+    "M kpó ékpè, ùtòm"
+  ];
+  const subtitleEl = document.getElementById("heroSubtitle");
+  let index = 0, charIndex = 0;
+
+  function typeEffect() {
+    const text = subtitles[index];
+    if (charIndex < text.length) {
+      subtitleEl.textContent += text.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeEffect, 80 + Math.random() * 120);
+    } else {
+      setTimeout(() => {
+        index = (index + 1) % subtitles.length;
+        charIndex = 0;
+        subtitleEl.textContent = "";
+        typeEffect();
+      }, 2000);
+    }
+  }
+  typeEffect();
+</script>
+
+<!-- Optional blink animation -->
+<style>
+  .blink {
+    animation: blink 1s infinite;
+  }
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+</style>
+
+    <!-- SNACK OF THE DAY -->
+    <section id="snack" class="py-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-3xl shadow-lg p-6 flex flex-col sm:flex-row items-center gap-6">
+          <div class="flex-1">
+            <div class="text-sm text-gray-500 uppercase tracking-wide">Snack of the Day</div>
+            <h3 id="snackTitle" class="text-2xl font-extrabold mt-1">Loading...</h3>
+            <p id="snackDesc" class="text-gray-700 mt-2">Please wait...</p>
+
+            <div class="mt-4 text-gray-600 text-lg font-medium flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Next snack in: <span id="snackCountdown" class="font-bold text-primary">00h 00m 00s</span>
+            </div>
+
+            <div class="mt-6 flex items-center gap-4">
+              <span id="snackPrice" class="text-2xl font-bold text-primary">₦0</span>
+              <button id="orderSnack" class="bg-primary text-white px-4 py-2 rounded-full font-semibold">Order Snack</button>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-64">
+            <img id="snackImage" src="" alt="Snack" class="rounded-2xl shadow-md w-full h-48 object-cover">
+          </div>
+        </div>
+      </div>
+      <script>
+(function(){
+  // Snack options
+  const snacks = [
+    { title: "Plantain Chips + Drink", desc: "Crispy plantain chips paired with a refreshment.", price: 600, img: "https://images.unsplash.com/photo-1625944230942-0f77a2c63c7d?q=80&w=800&auto=format&fit=crop" },
+    { title: "Spicy Suya Skewers", desc: "Tender meat skewers with our signature suya.", price: 1200, img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop" },
+    { title: "Jollof Rice Combo", desc: "Jollof rice with chicken and plantains.", price: 1500, img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" },
+    { title: "Egusi Soup & Pounded Yam", desc: "Traditional Egusi served with pounded yam.", price: 2000, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" },
+    { title: "Fried Yam & Egg Sauce", desc: "Golden fried yam with rich egg sauce.", price: 800, img: "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=800&auto=format&fit=crop" }
+  ];
+
+  const now = new Date();
+  const idx = now.getDate() % snacks.length; // rotate snack daily
+  const snack = snacks[idx];
+
+  // DOM elements
+  const snackTitle = document.getElementById('snackTitle');
+  const snackDesc = document.getElementById('snackDesc');
+  const snackPrice = document.getElementById('snackPrice');
+  const snackImage = document.getElementById('snackImage');
+  const snackCountdown = document.getElementById('snackCountdown');
+  const orderSnackBtn = document.getElementById('orderSnack');
+
+  // Render snack info
+  snackTitle.textContent = snack.title;
+  snackDesc.textContent = snack.desc;
+  snackPrice.textContent = `₦${snack.price.toLocaleString()}`;
+  snackImage.src = snack.img;
+
+  // Countdown timer to next snack
+  function updateCountdown(){
+    const now = new Date();
+    const next = new Date(now);
+    next.setDate(now.getDate() + 1);
+    next.setHours(0,0,0,0);
+    const diff = next - now;
+    const hours = String(Math.floor(diff/1000/60/60)).padStart(2,'0');
+    const mins = String(Math.floor((diff/1000/60)%60)).padStart(2,'0');
+    const secs = String(Math.floor((diff/1000)%60)).padStart(2,'0');
+    snackCountdown.textContent = `${hours}h ${mins}m ${secs}s`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Add snack to cart when ordered
+  orderSnackBtn.addEventListener('click', () => {
+    // Use global CART and saveCart functions from your main script
+    const existing = CART.find(c=>c.id === 'snack-'+idx);
+    if(existing) existing.qty++;
+    else CART.push({ id: 'snack-'+idx, name: snack.title, price: snack.price, qty: 1, img: snack.img });
+    saveCart();
+    // Open cart drawer
+    cartDrawer.classList.remove('translate-x-full');
+  });
+
+})();
+</script>
+    </section>
+
+  <!-- TOP RESTAURANTS -->
+<section id="top-restaurants" class="py-12 bg-gray-50">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="bg-white rounded-3xl shadow-lg p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 transition transform hover:scale-105">
-      
-      <!-- Snack Info -->
-      <div class="flex-1">
-        <div class="text-sm text-gray-500 uppercase tracking-wide">Snack of the Day</div>
-        <h3 id="snackTitle" class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 text-gray-900">Loading...</h3>
-        <p id="snackDesc" class="text-gray-700 mt-2 text-lg sm:text-xl">Please wait...</p>
-        
-        <!-- Countdown Timer -->
-        <div class="mt-4 text-gray-600 text-lg sm:text-xl font-medium flex items-center gap-2" id="snackCountdownWrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Next snack in: <span id="snackCountdown" class="font-bold text-primary">00h 00m 00s</span>
-        </div>
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-extrabold text-gray-900">Top Restaurants We Deliver From</h2>
+      <a href="menu.html" class="text-primary font-semibold text-sm hover:underline transition">See all</a>
+    </div>
 
-        <!-- Price & Order Button -->
-        <div class="mt-6 flex items-center gap-4">
-          <span id="snackPrice" class="text-2xl sm:text-3xl font-bold text-primary">₦0</span>
-          <a href="menu.html" class="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-dark transition transform hover:scale-105">Order Snack</a>
-        </div>
-      </div>
-
-      <!-- Snack Image -->
-      <div class="w-full sm:w-64">
-        <img id="snackImage" src="" alt="Snack" class="rounded-2xl shadow-md w-full h-48 sm:h-56 object-cover">
-      </div>
+    <div id="topRestaurantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Cards populated via JS -->
     </div>
   </div>
 </section>
 
 <script>
-(function() {
-  // List of snacks for rotation
-  const snacks = [
-    {
-      title: "Plantain Chips + Drink",
-      desc: "Crispy plantain chips paired with an ice-cold refreshment — perfect for a quick bite.",
-      price: "₦600",
-      img: "https://images.unsplash.com/photo-1625944230942-0f77a2c63c7d?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Spicy Suya Skewers",
-      desc: "Tender meat skewers grilled to perfection with our signature spicy suya blend.",
-      price: "₦1200",
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Jollof Rice Combo",
-      desc: "Delicious Nigerian jollof rice served with chicken and plantains.",
-      price: "₦1500",
-      img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Egusi Soup & Pounded Yam",
-      desc: "Traditional Egusi soup served with soft, stretchy pounded yam.",
-      price: "₦2000",
-      img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      title: "Fried Yam & Egg Sauce",
-      desc: "Golden fried yam chunks served with a rich, spicy egg sauce.",
-      price: "₦800",
-      img: "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=800&auto=format&fit=crop"
-    }
+  const topRestaurants = [
+    { name: "Mama's Kitchen", city: "Lagos", img: "https://via.placeholder.com/200x120", rating: 4.7, delivery: "30-40 min" },
+    { name: "Grill House", city: "Abuja", img: "https://via.placeholder.com/200x120", rating: 4.5, delivery: "25-35 min" },
+    { name: "Sweet Corner", city: "Port Harcourt", img: "https://via.placeholder.com/200x120", rating: 4.8, delivery: "20-30 min" },
+    { name: "Daily Bites", city: "Enugu", img: "https://via.placeholder.com/200x120", rating: 4.6, delivery: "35-45 min" }
   ];
 
-  // Calculate which snack to show based on the day
-  const now = new Date();
-  const snackIndex = now.getDate() % snacks.length;
-  const todaySnack = snacks[snackIndex];
+  const grid = document.getElementById('topRestaurantsGrid');
 
-  // Set snack details
-  document.getElementById("snackTitle").textContent = todaySnack.title;
-  document.getElementById("snackDesc").textContent = todaySnack.desc;
-  document.getElementById("snackPrice").textContent = todaySnack.price;
-  document.getElementById("snackImage").src = todaySnack.img;
-
-  // Countdown to next snack (midnight)
-  const countdownEl = document.getElementById("snackCountdown");
-  function updateCountdown() {
-    const now = new Date();
-    const nextMidnight = new Date(now);
-    nextMidnight.setDate(now.getDate() + 1);
-    nextMidnight.setHours(0,0,0,0);
-
-    const diff = nextMidnight - now;
-    const hours = String(Math.floor(diff / 1000 / 60 / 60)).padStart(2,'0');
-    const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2,'0');
-    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2,'0');
-
-    countdownEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
+  topRestaurants.forEach(rest => {
+    const card = document.createElement('div');
+    card.className = `
+      bg-white p-5 rounded-3xl shadow-lg transform transition-all hover:shadow-2xl hover:-translate-y-2 hover:scale-105 flex flex-col items-center relative
+    `;
+    card.innerHTML = `
+      <div class="relative w-full h-36 mb-4 rounded-2xl overflow-hidden shadow-md">
+        <img src="${rest.img}" alt="${rest.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+        <div class="absolute top-2 left-2 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800 flex items-center gap-1 shadow transition-transform duration-300 hover:scale-110">
+          ⭐ ${rest.rating}
+        </div>
+        <div class="absolute top-2 right-2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold shadow transition-transform duration-300 hover:scale-110">
+          ${rest.delivery}
+        </div>
+      </div>
+      <div class="text-center w-full">
+        <div class="font-bold text-xl text-gray-900 mb-1">${rest.name}</div>
+        <div class="text-gray-500 text-sm mb-3">${rest.city}</div>
+        <a href="menu.html?restaurant=${encodeURIComponent(rest.name)}" 
+          class="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-semibold px-5 py-2 rounded-full text-sm transition-all shadow-md inline-block">
+          View Menu
+        </a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
 </script>
 
-<!-- TOP RESTAURANTS -->
-<section id="top-restaurants" class="py-8 bg-gray-50">
+
+   <!-- MENU (dynamic grid with quantity control) -->
+<section id="menu" class="py-12 bg-gray-50">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Top Restaurants We Deliver From</h2>
-      <!-- Link to full menu page -->
-      <a href="menu.html" class="text-primary font-semibold text-sm hover:underline">See all</a>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
-        <img src="https://via.placeholder.com/120x80" alt="Mama's Kitchen" class="rounded mb-3 w-full h-20 object-cover">
-        <div class="font-semibold text-lg">Mama's Kitchen</div>
-        <div class="text-sm text-gray-500 mb-3">Lagos</div>
-        <!-- Link to menu page filtered by restaurant -->
-        <a href="menu.html?restaurant=Mama's Kitchen" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
-          View Menu
-        </a>
-      </div>
-
-      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
-        <img src="https://via.placeholder.com/120x80" alt="Grill House" class="rounded mb-3 w-full h-20 object-cover">
-        <div class="font-semibold text-lg">Grill House</div>
-        <div class="text-sm text-gray-500 mb-3">Abuja</div>
-        <a href="menu.html?restaurant=Grill House" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
-          View Menu
-        </a>
-      </div>
-
-      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
-        <img src="https://via.placeholder.com/120x80" alt="Sweet Corner" class="rounded mb-3 w-full h-20 object-cover">
-        <div class="font-semibold text-lg">Sweet Corner</div>
-        <div class="text-sm text-gray-500 mb-3">Port Harcourt</div>
-        <a href="menu.html?restaurant=Sweet Corner" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
-          View Menu
-        </a>
-      </div>
-
-      <div class="restaurant-card bg-white p-4 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1 text-center flex flex-col items-center">
-        <img src="https://via.placeholder.com/120x80" alt="Daily Bites" class="rounded mb-3 w-full h-20 object-cover">
-        <div class="font-semibold text-lg">Daily Bites</div>
-        <div class="text-sm text-gray-500 mb-3">Enugu</div>
-        <a href="menu.html?restaurant=Daily Bites" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-primary-dark transition">
-          View Menu
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-   <!-- MENU -->
-<section id="menu" class="py-8">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold">Popular near you</h2>
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-extrabold text-gray-900">Popular Near You</h2>
       <div class="flex items-center gap-3">
         <select id="filterCategory" class="p-2 rounded-lg border" aria-label="Filter category">
           <option value="all">All</option>
@@ -458,130 +628,422 @@
       </div>
     </div>
 
-    <!-- Menu Grid -->
     <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
 </section>
 
+<script>
+  const MENU = [
+    { id: 1, name: 'Chicken Shawarma', desc: 'Grilled chicken, garlic sauce', price: 1800, category: 'fast-food', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop' },
+    { id: 2, name: 'Beef Burger', desc: 'Double patty, cheese', price: 2200, category: 'fast-food', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop' },
+    { id: 3, name: 'Mango Smoothie', desc: 'Fresh mango, chilled', price: 900, category: 'drinks', img: 'https://images.unsplash.com/photo-1572441710266-1a5f3e1d1f10?q=80&w=800&auto=format&fit=crop' },
+    { id: 4, name: 'Chocolate Cake', desc: 'Rich chocolate slice', price: 1500, category: 'desserts', img: 'https://images.unsplash.com/photo-1544476915-ed1370594142?q=80&w=800&auto=format&fit=crop' },
+    { id: 5, name: 'French Fries', desc: 'Crispy golden fries', price: 700, category: 'fast-food', img: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=800&auto=format&fit=crop' },
+    { id: 6, name: 'Caesar Salad', desc: 'Fresh greens, Caesar dressing', price: 1200, category: 'healthy', img: 'https://images.unsplash.com/photo-1556910103-1e419f4b9f2d?q=80&w=800&auto=format&fit=crop' }
+  ];
 
-   <!-- TESTIMONIALS -->
+  let CART = {};
+
+  const menuGrid = document.getElementById('menuGrid');
+
+  function renderMenu(items) {
+    menuGrid.innerHTML = '';
+    items.forEach(item => {
+      const qty = CART[item.id]?.qty || 0;
+
+      const card = document.createElement('div');
+      card.className = `bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-transform transform hover:-translate-y-1 hover:scale-105`;
+      card.innerHTML = `
+        <div class="relative w-full h-48 overflow-hidden">
+          <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-xl text-gray-900">${item.name}</h3>
+            <p class="text-gray-500 mt-1">${item.desc}</p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <div class="text-lg font-extrabold text-primary">₦${item.price}</div>
+            <div class="flex items-center gap-2">
+              <button class="decBtn bg-gray-200 px-3 py-1 rounded-full font-semibold text-gray-700" data-id="${item.id}">−</button>
+              <span class="font-bold text-gray-900 qtyDisplay" data-id="${item.id}">${qty}</span>
+              <button class="incBtn bg-primary text-white px-3 py-1 rounded-full font-semibold" data-id="${item.id}">+</button>
+            </div>
+          </div>
+        </div>
+      `;
+      menuGrid.appendChild(card);
+    });
+  }
+
+  function updateQtyDisplay(id) {
+    const span = document.querySelector(`.qtyDisplay[data-id='${id}']`);
+    if(span) span.textContent = CART[id]?.qty || 0;
+  }
+
+  function updateCart(id, change) {
+    if(!CART[id]) CART[id] = { ...MENU.find(m=>m.id===id), qty:0 };
+    CART[id].qty += change;
+    if(CART[id].qty <= 0) delete CART[id];
+    updateQtyDisplay(id);
+    console.log('Cart:', CART); // For demo purposes, replace with cart drawer update
+  }
+
+  document.addEventListener('click', e => {
+    if(e.target.classList.contains('incBtn')) {
+      const id = parseInt(e.target.dataset.id);
+      updateCart(id, 1);
+    }
+    if(e.target.classList.contains('decBtn')) {
+      const id = parseInt(e.target.dataset.id);
+      updateCart(id, -1);
+    }
+  });
+
+  // Filter functionality
+  document.getElementById('filterCategory').addEventListener('change', e => {
+    const val = e.target.value;
+    const filtered = val === 'all' ? MENU : MENU.filter(m => m.category === val);
+    renderMenu(filtered);
+  });
+
+  // Sort functionality
+  document.getElementById('sortBy').addEventListener('change', e => {
+    const val = e.target.value;
+    let sorted = [...MENU];
+    if (val === 'price-asc') sorted.sort((a, b) => a.price - b.price);
+    if (val === 'price-desc') sorted.sort((a, b) => b.price - a.price);
+    renderMenu(sorted);
+  });
+
+  // Initial render
+  renderMenu(MENU);
+</script>
+
+    <!-- TESTIMONIALS CAROUSEL -->
 <section id="testimonials" class="py-16 bg-gradient-to-r from-primary/10 via-white to-primary/10">
   <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 animate-fadeInDown">What Our Customers Say</h2>
-    <p class="text-gray-600 mb-12 max-w-2xl mx-auto animate-fadeInDown delay-200">Real feedback from our satisfied customers who love our meals and fast delivery.</p>
+    <h2 class="text-3xl font-extrabold mb-4">What Our Customers Say</h2>
+    <p class="text-gray-600 mb-8">Real feedback from our satisfied customers who love our meals and fast delivery.</p>
 
-    <div class="swiper testsSwiper">
-      <div class="swiper-wrapper"></div>
-      <div class="swiper-pagination mt-6"></div>
+    <!-- Scrolling Track -->
+    <div class="relative overflow-hidden group">
+      <div id="testimonial-track" class="flex space-x-6 animate-scroll group-hover:[animation-play-state:paused]">
+        <!-- JS will inject testimonials here -->
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeInUp { animation: fadeInUp 1s ease forwards; }
-.animate-fadeInDown { animation: fadeInDown 1s ease forwards; }
-.delay-200 { animation-delay: 0.2s; }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
 </style>
 
-   <!-- NEWSLETTER -->
-<section class="py-12">
-  <div class="max-w-4xl mx-auto px-4 text-center bg-primary/10 rounded-3xl p-8 shadow-lg">
-    <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Get updates & exclusive deals</h3>
-    <p class="text-gray-700 mt-2 sm:text-lg">Subscribe to our newsletter for promos and free delivery weeks.</p>
-    <form id="newsletterForm" class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-      <input id="nlEmail" type="email" placeholder="Enter your email" class="p-3 sm:px-5 rounded-xl border w-full sm:w-auto focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Email">
-      <button class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition transform hover:scale-105">Subscribe</button>
-    </form>
-  </div>
-</section>
-
-<!-- LOGIN MODAL -->
-<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-white rounded-3xl w-11/12 max-w-md p-6 sm:p-8 shadow-2xl">
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="text-xl sm:text-2xl font-bold">Welcome back</h3>
-      <button id="closeLogin" class="p-2 rounded-md hover:bg-gray-200 transition" aria-label="Close login modal"><i class="fas fa-times"></i></button>
-    </div>
-    <p class="text-gray-600 mb-4">Login to track orders and save favourites.</p>
-    <form id="loginForm" class="space-y-3">
-      <input id="loginEmail" type="email" placeholder="Email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Email">
-      <input id="loginPass" type="password" placeholder="Password" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Password">
-      <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition transform hover:scale-105">Login</button>
-    </form>
-    <div class="mt-3 text-sm text-gray-600 text-center">
-      Don't have an account? <a href="#signup" class="text-secondary font-semibold hover:underline">Create one</a>
-    </div>
-  </div>
-</div>
-
-<!-- CART DRAWER -->
-<aside id="cartDrawer" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition z-50">
-  <div class="p-4 border-b flex items-center justify-between">
-    <h3 class="font-bold text-lg">Your Order</h3>
-    <button id="closeCartDrawer" class="p-2 rounded hover:bg-gray-200 transition" aria-label="Close cart drawer"><i class="fas fa-times"></i></button>
-  </div>
-  <div id="cartItems" class="p-4 space-y-4 overflow-y-auto max-h-[60vh]"></div>
-  <div class="p-4 border-t">
-    <div class="flex justify-between items-center mb-3">
-      <div class="text-sm text-gray-500">Subtotal</div>
-      <div id="cartSubtotal" class="font-bold text-lg">₦0</div>
-    </div>
-    <button id="checkoutBtn" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition transform hover:scale-105">Proceed to Checkout</button>
-  </div>
-</aside>
-
-<!-- FOOTER -->
-<footer class="site-footer mt-12 bg-white">
-  <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 rounded-3xl shadow-lg">
-    <div>
-      <div class="brand text-2xl sm:text-3xl font-bold text-primary flex items-center gap-2"><i class="fas fa-motorcycle text-yellow-400"></i> Chop Chop</div>
-      <p class="text-gray-600 mt-3 sm:mt-4 sm:text-lg">Delivering fresh meals & groceries across Nigeria. Fast, reliable, local.</p>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Quick Links</h4>
-      <ul class="text-gray-600 space-y-2">
-        <li><a href="#menu" class="hover:text-gray-900 transition">Menu</a></li>
-        <li><a href="#top-restaurants" class="hover:text-gray-900 transition">Top Restaurants</a></li>
-        <li><a href="#testimonials" class="hover:text-gray-900 transition">Testimonials</a></li>
-        <li><a href="#snack" class="hover:text-gray-900 transition">Snack of the Day</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Contact</h4>
-      <p class="text-gray-600 sm:text-lg">hello@chopchop.ng<br/>+234 000 000 0000</p>
-      <div class="flex gap-3 mt-4">
-        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="text-center text-gray-500 mt-6 text-sm sm:text-base flex flex-col sm:flex-row justify-center items-center gap-2">
-    <span><i class="fas fa-truck text-yellow-400 mr-2"></i> © <span id="year"></span> Chop Chop. All rights reserved.</span>
-    <span>Last modified: <span id="lm"></span></span>
-  </div>
-</footer>
-
 <script>
-  // Footer dynamic year and last modified
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('lm').textContent = document.lastModified;
+  const TESTIMONIALS = [
+    { name: 'Aisha Musa', loc: 'Lagos', text: 'Quick delivery and the shawarma was perfect.', rating: 5, avatar: 'A' },
+    { name: 'Michael Obi', loc: 'Abuja', text: 'Great packaging, tasted fresh.', rating: 5, avatar: 'M' },
+    { name: 'Ngozi E.', loc: 'Enugu', text: 'I love the app-like feel. It’s so easy to order from anywhere.', rating: 4, avatar: 'N' },
+    { name: 'Chinedu K', loc: 'Port Harcourt', text: 'Portions were generous and the food was hot. Highly recommend!', rating: 5, avatar: 'C' },
+    { name: 'Fatima H', loc: 'Kano', text: 'Delivery was on time. Very satisfied with the service!', rating: 5, avatar: 'F' },
+    { name: 'Samuel T', loc: 'Kaduna', text: 'The jollof rice was authentic and full of flavor. Will order again!', rating: 5, avatar: 'S' },
+    { name: 'Rita U', loc: 'Jos', text: 'Snacks were fresh and delicious. Kids loved them!', rating: 4, avatar: 'R' },
+    { name: 'Emeka O', loc: 'Enugu', text: 'I tried the suya platter. Best suya I have ever had.', rating: 5, avatar: 'E' },
+    { name: 'Blessing A', loc: 'Ibadan', text: 'App is very user-friendly. Loved the fast checkout.', rating: 5, avatar: 'B' }
+  ];
+
+  const track = document.getElementById('testimonial-track');
+
+  function renderStars(rating) {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
+
+  function createCard(t) {
+    return `
+      <div class="bg-white p-6 rounded-2xl shadow w-72 flex-shrink-0 text-left">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white font-bold">
+            ${t.avatar}
+          </div>
+          <div>
+            <p class="font-semibold">${t.name}</p>
+            <p class="text-sm text-gray-500">${t.loc}</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">“${t.text}”</p>
+        <div class="mt-4 text-yellow-400 text-lg">${renderStars(t.rating)}</div>
+      </div>
+    `;
+  }
+
+  // Add testimonials twice (for smooth infinite loop)
+  TESTIMONIALS.concat(TESTIMONIALS).forEach(t => {
+    track.insertAdjacentHTML("beforeend", createCard(t));
+  });
 </script>
 
-  <!-- App JS -->
-  <script src="app.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('lm').textContent = document.lastModified;
-  </script>
 
+    <!-- NEWSLETTER -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-4 text-center bg-primary/10 rounded-3xl p-8 shadow-lg">
+        <h3 class="text-2xl font-extrabold">Get updates & exclusive deals</h3>
+        <p class="text-gray-700 mt-2">Subscribe to our newsletter for promos and free delivery weeks.</p>
+        <form id="newsletterForm" class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          <input id="nlEmail" type="email" placeholder="Enter your email" class="p-3 sm:px-5 rounded-xl border w-full sm:w-auto focus:ring-2 focus:ring-primary focus:outline-none" required aria-label="Email">
+          <button class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer mt-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 rounded-3xl shadow-lg">
+      <div>
+        <div class="brand text-2xl sm:text-3xl font-bold text-primary flex items-center gap-2"><i class="fas fa-motorcycle text-yellow-400"></i> Chop Chop</div>
+        <p class="text-gray-600 mt-3 sm:mt-4 sm:text-lg">Delivering fresh meals & groceries across Nigeria. Fast, reliable, local.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Quick Links</h4>
+        <ul class="text-gray-600 space-y-2">
+          <li><a href="#menu" class="hover:text-gray-900 transition">Menu</a></li>
+          <li><a href="#top-restaurants" class="hover:text-gray-900 transition">Top Restaurants</a></li>
+          <li><a href="#testimonials" class="hover:text-gray-900 transition">Testimonials</a></li>
+          <li><a href="#snack" class="hover:text-gray-900 transition">Snack of the Day</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3 sm:mb-4 text-gray-900">Contact</h4>
+        <p class="text-gray-600 sm:text-lg">hello@chopchop.ng<br/>+234 000 000 0000</p>
+        <div class="flex gap-3 mt-4">
+          <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a class="w-10 h-10 rounded-full bg-gray-100 grid place-items-center hover:bg-gray-200 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center text-gray-500 mt-6 text-sm sm:text-base flex flex-col sm:flex-row justify-center items-center gap-2">
+      <span><i class="fas fa-truck text-yellow-400 mr-2"></i> © <span id="year"></span> Chop Chop. All rights reserved.</span>
+      <span>Last modified: <span id="lm"></span></span>
+    </div>
+  </footer>
+
+  <!-- =========================
+       SCRIPTS (all inline for convenience)
+       ========================= -->
+  <script>
+    // footer dynamic
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lm').textContent = document.lastModified || 'N/A';
+
+    // mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenuPanel.classList.contains('hidden');
+      mobileMenuPanel.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      // prevent background scroll when open
+      document.body.classList.toggle('overflow-hidden', !isOpen);
+    });
+
+    // mobile search toggle
+    const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+    const mobileSearchBox = document.getElementById('mobileSearchBox');
+    mobileSearchToggle.addEventListener('click', () => {
+      const visible = !mobileSearchBox.classList.contains('hidden');
+      mobileSearchBox.classList.toggle('hidden');
+      mobileSearchToggle.setAttribute('aria-expanded', String(!visible));
+      if (!visible) document.getElementById('mobileSearchInput').focus();
+    });
+
+    // cart drawer
+    const cartBtn = document.getElementById('cartBtn');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const closeCartDrawer = document.getElementById('closeCartDrawer');
+    const cartCountEl = document.getElementById('cartCount');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartSubtotalEl = document.getElementById('cartSubtotal');
+
+    function openCart() {
+      cartDrawer.classList.remove('translate-x-full');
+      cartDrawer.setAttribute('aria-hidden','false');
+      cartBtn.setAttribute('aria-expanded','true');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeCart() {
+      cartDrawer.classList.add('translate-x-full');
+      cartDrawer.setAttribute('aria-hidden','true');
+      cartBtn.setAttribute('aria-expanded','false');
+      document.body.classList.remove('overflow-hidden');
+    }
+    cartBtn.addEventListener('click', openCart);
+    closeCartDrawer.addEventListener('click', closeCart);
+
+    // simple cart implementation
+    const cart = {};
+    function addToCart(item) {
+      if (!cart[item.id]) cart[item.id] = { ...item, qty: 0 };
+      cart[item.id].qty += 1;
+      renderCart();
+    }
+    function removeFromCart(id) {
+      delete cart[id];
+      renderCart();
+    }
+    function renderCart() {
+      const items = Object.values(cart);
+      cartCountEl.textContent = items.reduce((s,i) => s + i.qty, 0);
+      if (items.length === 0) {
+        cartItemsList.innerHTML = '<div class="text-sm text-gray-500">Your cart is empty.</div>';
+        cartSubtotalEl.textContent = '₦0';
+        return;
+      }
+      cartItemsList.innerHTML = '';
+      let subtotal = 0;
+      items.forEach(i => {
+        subtotal += i.price * i.qty;
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between bg-gray-50 p-3 rounded';
+        row.innerHTML = `
+          <div>
+            <div class="font-semibold">${i.name}</div>
+            <div class="text-sm text-gray-500">₦${i.price.toLocaleString()} × ${i.qty}</div>
+          </div>
+          <div class="flex flex-col items-end gap-2">
+            <div class="text-sm font-semibold">₦${(i.price * i.qty).toLocaleString()}</div>
+            <div>
+              <button data-remove="${i.id}" class="text-sm text-red-500 hover:underline">Remove</button>
+            </div>
+          </div>
+        `;
+        cartItemsList.appendChild(row);
+      });
+      cartSubtotalEl.textContent = `₦${subtotal.toLocaleString()}`;
+
+      // attach remove listeners
+      cartItemsList.querySelectorAll('[data-remove]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-remove');
+          removeFromCart(id);
+        });
+      });
+    }
+
+    // Sample menu data and render
+    const menuItems = [
+      { id: 'm1', name: 'Jollof Rice & Chicken', category: 'fast-food', price: 1500, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop' },
+      { id: 'm2', name: 'Spicy Suya Skewers', category: 'fast-food', price: 1200, img: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop' },
+      { id: 'm3', name: 'Plantain Chips + Drink', category: 'drinks', price: 600, img: 'https://images.unsplash.com/photo-1625944230942-0f77a2c63c7d?q=80&w=800&auto=format&fit=crop' },
+      { id: 'm4', name: 'Egusi Soup & Pounded Yam', category: 'fast-food', price: 2000, img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop' },
+      { id: 'm5', name: 'Fried Yam & Egg Sauce', category: 'fast-food', price: 800, img: 'https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=800&auto=format&fit=crop' },
+      { id: 'm6', name: 'Chocolate Cake Slice', category: 'desserts', price: 900, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop' },
+    ];
+    
+    // snack of the day
+    (function(){
+      const snacks = [
+        { title: "Plantain Chips + Drink", desc: "Crispy plantain chips paired with a refreshment.", price: 600, img: "https://images.unsplash.com/photo-1625944230942-0f77a2c63c7d?q=80&w=800&auto=format&fit=crop" },
+        { title: "Spicy Suya Skewers", desc: "Tender meat skewers with our signature suya.", price: 1200, img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=800&auto=format&fit=crop" },
+        { title: "Jollof Rice Combo", desc: "Jollof rice with chicken and plantains.", price: 1500, img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" },
+        { title: "Egusi Soup & Pounded Yam", desc: "Traditional Egusi served with pounded yam.", price: 2000, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" },
+        { title: "Fried Yam & Egg Sauce", desc: "Golden fried yam with rich egg sauce.", price: 800, img: "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8d97?q=80&w=800&auto=format&fit=crop" }
+      ];
+      const now = new Date();
+      const idx = now.getDate() % snacks.length;
+      const snack = snacks[idx];
+      document.getElementById('snackTitle').textContent = snack.title;
+      document.getElementById('snackDesc').textContent = snack.desc;
+      document.getElementById('snackPrice').textContent = `₦${snack.price.toLocaleString()}`;
+      document.getElementById('snackImage').src = snack.img;
+
+      function updateCountdown(){
+        const now = new Date();
+        const next = new Date(now);
+        next.setDate(now.getDate() + 1);
+        next.setHours(0,0,0,0);
+        const diff = next - now;
+        const hours = String(Math.floor(diff/1000/60/60)).padStart(2,'0');
+        const mins = String(Math.floor((diff/1000/60)%60)).padStart(2,'0');
+        const secs = String(Math.floor((diff/1000)%60)).padStart(2,'0');
+        document.getElementById('snackCountdown').textContent = `${hours}h ${mins}m ${secs}s`;
+      }
+      updateCountdown();
+      setInterval(updateCountdown,1000);
+
+      // order snack quickly (adds to cart)
+      document.getElementById('orderSnack').addEventListener('click', () => {
+        addToCart({ id: 'snack-'+idx, name: snack.title, price: snack.price, img: snack.img });
+        openCart();
+      });
+    })();
+
+    // hero subtitle rotator (simple)
+    (function(){
+      const subtitles = ['Shawarma', 'Jollof', 'Suya', 'Fresh Groceries', 'Fast Delivery'];
+      let i = 0;
+      const el = document.getElementById('heroSubtitle');
+      function tick(){
+        el.textContent = subtitles[i % subtitles.length];
+        i++;
+      }
+      tick();
+      setInterval(tick, 2500);
+    })();
+
+    // dark mode toggle (persist)
+    const darkToggle = document.getElementById('darkToggle');
+    const mobileDarkToggle = document.getElementById('mobileDarkToggle');
+    function setDarkMode(enabled){
+      document.documentElement.classList.toggle('dark', enabled);
+      localStorage.setItem('chopchop_dark', enabled ? '1' : '0');
+      if (enabled) document.getElementById('darkIcon').className = 'fas fa-sun text-yellow-400';
+      else document.getElementById('darkIcon').className = 'fas fa-moon text-gray-600';
+      // update mobile label/icon if present
+    }
+    // init from storage or system
+    const saved = localStorage.getItem('chopchop_dark');
+    if (saved === null) {
+      setDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    } else {
+      setDarkMode(saved === '1');
+    }
+    if (darkToggle) darkToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+    if (mobileDarkToggle) mobileDarkToggle.addEventListener('click', () => setDarkMode(!document.documentElement.classList.contains('dark')));
+
+    // basic search behavior (no backend)
+    function doSearch(q) {
+      if (!q) return;
+      alert('Search for: ' + q + '\n(Integrate with your search backend or redirect to /search?q=...)');
+    }
+    document.getElementById('searchBtn').addEventListener('click', () => doSearch(document.getElementById('searchInput').value));
+    document.getElementById('mobileSearchBtn').addEventListener('click', () => doSearch(document.getElementById('mobileSearchInput').value));
+    document.getElementById('mobileSearchInput').addEventListener('keydown', (e)=>{ if (e.key==='Enter') doSearch(e.target.value); });
+    document.getElementById('searchInput').addEventListener('keydown', (e)=>{ if (e.key==='Enter') doSearch(e.target.value); });
+
+    // Small accessibility: close mobile panel and cart on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!mobileMenuPanel.classList.contains('hidden')) {
+          mobileMenuPanel.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+          menuToggle.setAttribute('aria-expanded','false');
+        }
+        if (!cartDrawer.classList.contains('translate-x-full')) {
+          closeCart();
+        }
+      }
+    });
+
+  </script>
 </body>
 </html>
